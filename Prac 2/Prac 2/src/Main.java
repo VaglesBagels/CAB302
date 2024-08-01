@@ -6,7 +6,7 @@ public class Main {
     private static ArrayList<User> users = new ArrayList<>();
 
     // Mock authentication service that always returns the first user when log in, and does nothing when sign up
-    private static IAuthenticationService authService = new IAuthenticationService() {
+    private static new AuthenticationService(users) = new IAuthenticationService() {
         @Override
         public User signUp(String username, String password) {
             return null;
@@ -93,6 +93,11 @@ public class Main {
         String password = scanner.nextLine();
         User user = authService.signUp(username, password);
         // TODO Later: Shows a message based on the result
+        if (user != null){
+            System.out.printf("User" + username + "created");
+        } else {
+            System.out.printf("User already exists");
+        }
     }
 
     /**
